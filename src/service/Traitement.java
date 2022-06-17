@@ -74,7 +74,7 @@ public class Traitement {
 
         for (Client unClient : cli) {
             if (unClient.getId() == choixClient) {
-                CompteBancaire unCompteCourant = new CompteCourant(unClient, decouvertAutorise, solde, numeroDeCompte, codeAgence);
+                lecompte.add(new CompteCourant(unClient, decouvertAutorise, solde, numeroDeCompte, codeAgence););
             }
         }
     }
@@ -97,7 +97,8 @@ public class Traitement {
 
         for (Client unClient : cli) {
             if (unClient.getId() == choixClient) {
-                CompteBancaire LivretA = new LivretA(unClient, decouvertAutorise, solde, numeroDeCompte, codeAgence);
+
+                lecompte.add(new LivretA(unClient, decouvertAutorise, solde, numeroDeCompte, codeAgence);)
             }
         }
     }
@@ -120,7 +121,7 @@ public class Traitement {
 
         for (Client unClient : cli) {
             if (unClient.getId() == choixClient) {
-                CompteBancaire planEpargneLogement = new PlanEpargneLogement(unClient, decouvertAutorise, solde, numeroDeCompte, codeAgence);
+                lecompte.add(new PlanEpargneLogement(unClient, decouvertAutorise, solde, numeroDeCompte, codeAgence);)
             }
         }
     }
@@ -129,13 +130,13 @@ public class Traitement {
         String numeroDeCompte = saisieUtilisateur("Veuillez entrez un numéro de compte");
 
         for (CompteBancaire unCompte : lecompte) {
-            //if (numeroDeCompte == unCompte.getNumCompte()) {
+            if (numeroDeCompte == unCompte.getNumCompte()) {
             unCompte.afficherCompte();
-            //} //else {
-               // System.out.println("Veuillez saisir une compte existant");
-           // }
+            } else {
+                System.out.println("Veuillez saisir une compte existant");
+            }
         }
-       // System.out.println(numeroDeCompte);
+        System.out.println(numeroDeCompte);
     }
 
     public void rechercheDeClient(ArrayList<Client> cli) {
