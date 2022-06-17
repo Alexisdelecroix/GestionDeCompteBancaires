@@ -53,7 +53,7 @@ public class Menu {
                     unTraitement.RechercheCompte(cpte);
                     break;
                 case 5 :
-                    unTraitement.rechercheDeClient(cl);
+                    unTraitement.rechercheDeClient(cpte);
                     break;
                 case 6 :
                     unTraitement.afficherListeCompteClient(cpte,cl);
@@ -82,13 +82,13 @@ public class Menu {
 
             switch (choix) {
                 case 1 :
-                    unTraitement.CreerUnCompteCourant(cpt,cl,a);
+                    unTraitement.CreerUnCompte(cpt,cl,a, 1);
                     break;
                 case 2 :
-                    unTraitement.CreerUnLivretA(cpt,cl,a);
+                    unTraitement.CreerUnCompte(cpt,cl,a, 2);
                     break;
                 case 3:
-                    unTraitement.CreerUnPlanEpargneLogement(cpt,cl,a);
+                    unTraitement.CreerUnCompte(cpt,cl,a, 3);
                     break;
 //                case 4 :
 

@@ -74,8 +74,7 @@ static int numbreClient;
 
     public void  afficherClient() {
         System.out.println("Fiche Client '\n'" +
-                "Numéro client :  "   +"\n" +
-
+                "L'id du client : "+ id+ "\n"+
                 ", nom='" + nom + "\n" +
                 ", prenom='" + prenom + "\n" +
                 ", date De Naissance='" + dateDeNaissance + "\n" +

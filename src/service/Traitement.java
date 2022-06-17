@@ -56,7 +56,7 @@ public class Traitement {
 //        }
 //    }
 
-    public void CreerUnCompteCourant(ArrayList<CompteBancaire> lecompte, ArrayList<Client> cli, ArrayList<Agence> a) {
+    public void CreerUnCompte(ArrayList<CompteBancaire> lecompte, ArrayList<Client> cli, ArrayList<Agence> a, int choix) {
         System.out.println("Bienvenue");
         //        affichage de l'ensemble des agences pour choisir l'agence du client
         for (Agence uneAgence : a) {
@@ -74,54 +74,17 @@ public class Traitement {
 
         for (Client unClient : cli) {
             if (unClient.getId() == choixClient) {
-                lecompte.add(new CompteCourant(unClient, decouvertAutorise, solde, numeroDeCompte, codeAgence););
-            }
-        }
-    }
-
-    public void CreerUnLivretA(ArrayList<CompteBancaire> lecompte, ArrayList<Client> cli, ArrayList<Agence> a) {
-        System.out.println("Bienvenue");
-        //        affichage de l'ensemble des agences pour choisir l'agence du client
-        for (Agence uneAgence : a) {
-            uneAgence.afficherAgence();
-        }
-        String codeAgence = saisieUtilisateur("Parmis les agences afficher, veuillez saisir le code agence");
-//      Affichage de l'ensemble des clients
-        for (Client unClient : cli) {
-            unClient.afficherClient();
-        }
-        int choixClient = saisieUtilisateurNb("Pour quelle client voulait vous créer un compte, saissisez L'id");
-        String numeroDeCompte = saisieUtilisateur("Entrez votre numéro de compte");
-        float solde = Float.parseFloat(saisieUtilisateur("Entrez votre solde"));
-        boolean decouvertAutorise = false;
-
-        for (Client unClient : cli) {
-            if (unClient.getId() == choixClient) {
-
-                lecompte.add(new LivretA(unClient, decouvertAutorise, solde, numeroDeCompte, codeAgence);)
-            }
-        }
-    }
-
-    public void CreerUnPlanEpargneLogement(ArrayList<CompteBancaire> lecompte, ArrayList<Client> cli, ArrayList<Agence> a) {
-        System.out.println("Bienvenue");
-        //        affichage de l'ensemble des agences pour choisir l'agence du client
-        for (Agence uneAgence : a) {
-            uneAgence.afficherAgence();
-        }
-        String codeAgence = saisieUtilisateur("Parmis les agences afficher, veuillez saisir le code agence");
-//      Affichage de l'ensemble des clients
-        for (Client unClient : cli) {
-            unClient.afficherClient();
-        }
-        int choixClient = saisieUtilisateurNb("Pour quelle client voulait vous créer un compte, saissisez L'id");
-        String numeroDeCompte = saisieUtilisateur("Entrez votre numéro de compte");
-        float solde = Float.parseFloat(saisieUtilisateur("Entrez votre solde"));
-        boolean decouvertAutorise = false;
-
-        for (Client unClient : cli) {
-            if (unClient.getId() == choixClient) {
-                lecompte.add(new PlanEpargneLogement(unClient, decouvertAutorise, solde, numeroDeCompte, codeAgence);)
+                if (choix == 1) {
+                    lecompte.add(new CompteCourant(unClient, decouvertAutorise, solde, numeroDeCompte, codeAgence));
+                } else {
+                    if (choix == 2) {
+                        lecompte.add(new LivretA(unClient, decouvertAutorise, solde, numeroDeCompte, codeAgence));
+                    } else {
+                        if (choix == 3) {
+                            lecompte.add(new PlanEpargneLogement(unClient, decouvertAutorise, solde, numeroDeCompte, codeAgence));
+                        }
+                    }
+                }
             }
         }
     }
@@ -130,23 +93,20 @@ public class Traitement {
         String numeroDeCompte = saisieUtilisateur("Veuillez entrez un numéro de compte");
 
         for (CompteBancaire unCompte : lecompte) {
-            if (numeroDeCompte == unCompte.getNumCompte()) {
-            unCompte.afficherCompte();
+            if (numeroDeCompte.equals(unCompte.getNumCompte()) ) {
+            unCompte.afficherCompte(unCompte);
             } else {
                 System.out.println("Veuillez saisir une compte existant");
             }
         }
-        System.out.println(numeroDeCompte);
     }
 
-    public void rechercheDeClient(ArrayList<Client> cli) {
+    public void rechercheDeClient( ArrayList<CompteBancaire> cpte) {
         int saisieId = saisieUtilisateurNb("Veuillez saisir l'id du Client");
 
-        for (Client unClient : cli) {
-            if (saisieId == unClient.getId()) {
-                unClient.afficherClient();
-            } else {
-                System.out.println("Veuillez saisir un id existant");
+        for ( CompteBancaire unCompte : cpte) {
+            if ( saisieId == unCompte.getLeClient().getId()) {
+                unCompte.afficherUnClient(unCompte.getLeClient());
             }
         }
     }
@@ -158,9 +118,66 @@ public class Traitement {
                 unClient.afficherClient();
                 for (CompteBancaire leCompte : compte) {
                     if (leCompte.getLeClient() == unClient) {
-                        leCompte.afficherCompte();
+                        leCompte.afficherCompte(leCompte);
                     }
                 }
+
+
+
+
+
+
+
+
+                //    public void CreerUnLivretA(ArrayList<CompteBancaire> lecompte, ArrayList<Client> cli, ArrayList<Agence> a) {
+//        System.out.println("Bienvenue");
+//               affichage de l'ensemble des agences pour choisir l'agence du client
+//        for (Agence uneAgence : a) {
+//            uneAgence.afficherAgence();
+//        }
+//        String codeAgence = saisieUtilisateur("Parmis les agences afficher, veuillez saisir le code agence");
+//  Affichage de l'ensemble des clients
+//        for (Client unClient : cli) {
+//            unClient.afficherClient();
+//        }
+//        int choixClient = saisieUtilisateurNb("Pour quelle client voulait vous créer un compte, saissisez L'id");
+//        String numeroDeCompte = saisieUtilisateur("Entrez votre numéro de compte");
+//        float solde = Float.parseFloat(saisieUtilisateur("Entrez votre solde"));
+//        boolean decouvertAutorise = false;
+//
+//        for (Client unClient : cli) {
+//            if (unClient.getId() == choixClient) {
+//
+//                lecompte.add(new LivretA(unClient, decouvertAutorise, solde, numeroDeCompte, codeAgence));
+//            }
+//        }
+//    }
+//
+//    public void CreerUnPlanEpargneLogement(ArrayList<CompteBancaire> lecompte, ArrayList<Client> cli, ArrayList<Agence> a) {
+//        System.out.println("Bienvenue");
+//        //        affichage de l'ensemble des agences pour choisir l'agence du client
+//        for (Agence uneAgence : a) {
+//            uneAgence.afficherAgence();
+//        }
+//        String codeAgence = saisieUtilisateur("Parmis les agences afficher, veuillez saisir le code agence");
+////      Affichage de l'ensemble des clients
+//        for (Client unClient : cli) {
+//            unClient.afficherClient();
+//        }
+//        int choixClient = saisieUtilisateurNb("Pour quelle client voulait vous créer un compte, saissisez L'id");
+//        String numeroDeCompte = saisieUtilisateur("Entrez votre numéro de compte");
+//        float solde = Float.parseFloat(saisieUtilisateur("Entrez votre solde"));
+//        boolean decouvertAutorise = false;
+//
+//        for (Client unClient : cli) {
+//            if (unClient.getId() == choixClient) {
+//                lecompte.add(new PlanEpargneLogement(unClient, decouvertAutorise, solde, numeroDeCompte, codeAgence));
+//            }
+//        }
+//    }
+
+
+
 
 
 

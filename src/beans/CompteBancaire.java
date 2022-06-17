@@ -89,8 +89,18 @@ public  class CompteBancaire {
         return frais;
     }
 
-    public void afficherCompte() {
-        System.out.println("CompteBancaire{" + "\n"+
+    public void afficherCompte(CompteBancaire lecompte) {
+        String message;
+        if (lecompte instanceof CompteCourant) {
+            message = "Compte Courant";
+        } else {
+            if (lecompte instanceof LivretA) {
+                message = "Livret A";
+            } else {
+                message = "Plan D'epargne logement";
+            }
+        }
+        System.out.println(message + "{" + "\n"+
                 "leClient=" + leClient.getNom() +
                 ", decouvertAutorise=" + decouvertAutorise +
                 ", solde=" + solde +
@@ -99,6 +109,14 @@ public  class CompteBancaire {
                 '}');
     }
 
+
+    public void afficherUnClient(Client leClient) {
+        System.out.println("Fiche client"+"\n"+"\n"+
+                "Le numéro de client est : "+numCompte+ "\n"+
+               "Le nom du client est : "+ leClient.getNom()+ "\n"+
+                "Le prénom du client est :  "+leClient.getPrenom()+ "\n"+
+                "La date de naissance du client est : "+leClient.getDateDeNaissance());
+    }
 
 
     }
