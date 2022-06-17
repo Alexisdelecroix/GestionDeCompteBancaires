@@ -4,12 +4,13 @@ import beans.CompteBancaire;
 import service.Menu;
 import service.Traitement;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
 
         ArrayList<CompteBancaire> nosComptes=new ArrayList<>();
@@ -20,7 +21,7 @@ public class Main {
 
 //        Client leclient = new Client ("Alexis" ,"delecroix","22/11/1995","d-alexisahotmail.fr");
 
-        unMenu.MenuGestion(nosAgences, nosClients, nosComptes);
+        unMenu.MenuGestion(nosAgences, nosClients, nosComptes );
 
     }
 }

@@ -1,5 +1,6 @@
 package service;
-
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import beans.*;
 import jdk.swing.interop.SwingInterOpUtils;
 
@@ -14,7 +15,21 @@ public class Traitement {
     // ArrayList<Client> listClient = new ArrayList<>();
     // ArrayList<CompteBancaire> listCompteBancaire = new ArrayList<>();
 
-
+        public void Imprimer(ArrayList<CompteBancaire> compte, ArrayList<Client> cli) throws FileNotFoundException {
+            PrintWriter out = new PrintWriter("FicheClient.txt");
+            int saisieId = saisieUtilisateurNb("Veuillez saisir l'id du client");
+            for (Client unClient : cli) {
+                if (saisieId == unClient.getId()) {
+                    unClient.afficherClient();
+                    for (CompteBancaire leCompte : compte) {
+                        if (leCompte.getLeClient() == unClient) {
+                            out.println(leCompte.ImprimerInfo(unClient, leCompte));
+                            out.close();
+                        }
+                    }
+                }
+            }
+        }
     public void CreerAgence(ArrayList<Agence> liste) {
         System.out.println("Bienvenue dans notre programme d'enregistrement d'agence ");
         String codeAgence = saisieUtilisateur("Entrez le code de l'agence");
@@ -60,18 +75,15 @@ public class Traitement {
         System.out.println("Bienvenue");
         //        affichage de l'ensemble des agences pour choisir l'agence du client
         for (Agence uneAgence : a) {
-            uneAgence.afficherAgence();
-        }
+            uneAgence.afficherAgence();}
         String codeAgence = saisieUtilisateur("Parmis les agences afficher, veuillez saisir le code agence");
 //      Affichage de l'ensemble des clients
         for (Client unClient : cli) {
-            unClient.afficherClient();
-        }
+            unClient.afficherClient();}
         int choixClient = saisieUtilisateurNb("Pour quelle client voulait vous créer un compte, saissisez L'id");
         String numeroDeCompte = saisieUtilisateur("Entrez votre numéro de compte");
         float solde = Float.parseFloat(saisieUtilisateur("Entrez votre solde"));
         boolean decouvertAutorise = false;
-
         for (Client unClient : cli) {
             if (unClient.getId() == choixClient) {
                 if (choix == 1) {
@@ -90,6 +102,7 @@ public class Traitement {
     }
 
     public void RechercheCompte(ArrayList<CompteBancaire> lecompte) {
+
         String numeroDeCompte = saisieUtilisateur("Veuillez entrez un numéro de compte");
 
         for (CompteBancaire unCompte : lecompte) {
@@ -122,11 +135,7 @@ public class Traitement {
                     }
                 }
 
-
-
-
-
-
+                }
 
 
                 //    public void CreerUnLivretA(ArrayList<CompteBancaire> lecompte, ArrayList<Client> cli, ArrayList<Agence> a) {
@@ -177,10 +186,6 @@ public class Traitement {
 //    }
 
 
-
-
-
-
             //Methode pour afficher les comptes client
 //                for (CompteBancaire unCompte : compte) {
 //                    unCompte.getLeClient().afficherClient();
@@ -197,4 +202,3 @@ public class Traitement {
             }
         }
     }
-}

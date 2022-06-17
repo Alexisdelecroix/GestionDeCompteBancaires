@@ -118,7 +118,29 @@ public  class CompteBancaire {
                 "La date de naissance du client est : "+leClient.getDateDeNaissance());
     }
 
-
+        public String ImprimerInfo(Client leClient, CompteBancaire cpte) {
+        String message;
+        if (cpte instanceof CompteBancaire) {
+            message = "Compte courant";
+        } else {
+            if (cpte instanceof LivretA) {
+                message = "Livret A";
+            } else {
+                message = "Plan Epargne Logement";
+            }
+        }
+            return("Fiche client"+"\n"+"\n"+
+                    "Le numéro de client est : "+numCompte+ "\n"+
+                    "Le nom du client est : "+ leClient.getNom()+ "\n"+
+                    "Le prénom du client est :  "+leClient.getPrenom()+ "\n"+
+                    "La date de naissance du client est : "+leClient.getDateDeNaissance())+ "\n"+ "\n"+
+                    "Votre compte est un : "+message+ "\n"+
+                    "Votre decouvert Autorise : " + decouvertAutorise + "\n"+
+                    ", Votre solde est : " + solde + "\n"+
+                    ", Votre numéro de compte : " + numCompte + "\n" +
+                    ", Votre code agence est : " + codeAgence + "\n" +
+                    '}';
+        }
     }
 
 

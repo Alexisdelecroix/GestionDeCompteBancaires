@@ -4,6 +4,7 @@ import beans.Agence;
 import beans.Client;
 import beans.CompteBancaire;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import static service.MethodeSaisie.saisieUtilisateurNb;
@@ -12,7 +13,7 @@ public class Menu {
                     Traitement unTraitement = new Traitement();
 
 
-    public void MenuGestion(ArrayList<Agence> a, ArrayList<Client> cl, ArrayList<CompteBancaire> cpte) {
+    public void MenuGestion(ArrayList<Agence> a, ArrayList<Client> cl, ArrayList<CompteBancaire> cpte) throws FileNotFoundException {
 
         int choix = 0;
 
@@ -59,6 +60,7 @@ public class Menu {
                     unTraitement.afficherListeCompteClient(cpte,cl);
                     break;
                 case 7 :
+                    unTraitement.Imprimer(cpte,cl);
             }
         } while (choix != 8);
     }

@@ -73,11 +73,18 @@ static int numbreClient;
 
 
     public void  afficherClient() {
-        System.out.println("Fiche Client '\n'" +
-                "L'id du client : "+ id+ "\n"+
-                ", nom='" + nom + "\n" +
-                ", prenom='" + prenom + "\n" +
-                ", date De Naissance='" + dateDeNaissance + "\n" +
-                '}');
+
+        System.out.println("***********************************************");
+        System.out.println("*                                             *");
+        System.out.println("*               Fiche Client                  *");
+        System.out.println("* Id du client : "+id+"                       *");
+        System.out.println("* Nom : "+nom+"                               *");
+        System.out.println("* Prenom : "+prenom+"                         *");
+        System.out.println("* Date de Naissance : "+dateDeNaissance+"     *");
+        System.out.println("*                                             *");
+        System.out.println("***********************************************");
+
     }
+
+
 }

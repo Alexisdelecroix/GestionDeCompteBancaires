@@ -41,10 +41,14 @@ public class Agence {
 
 
     public void afficherAgence() {
-        System.out.println("Agence{" + "\n" +
-                "codeAgence=" + codeAgence + "\n"+
-                ", nomAgence='" + nomAgence + "\n" +
-                ", adresse='" + adresse + "\n" +
-                '}');
+
+        System.out.println("***********************************************");
+        System.out.println("*              Fiche Agence                   *");
+        System.out.println("*                                             *");
+        System.out.println("* Code Agence : "+codeAgence+"                *");
+        System.out.println("* Nom Agence : "+nomAgence+"                  *");
+        System.out.println("* Adresse de l'agence : "+adresse+"           *");
+        System.out.println("*                                             *");
+        System.out.println("***********************************************");
     }
 }
